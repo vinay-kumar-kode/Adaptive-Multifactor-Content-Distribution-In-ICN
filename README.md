@@ -47,23 +47,3 @@ cd ns-3
 The exact dependencies required by ns-3/ndnSIM depend on the operating
 system. See `ns-3/README.md` for the upstream simulator build information.
 
-## Push this repository to GitHub
-
-Run these commands from the repository root. Replace the remote URL only if
-you are using a different GitHub repository:
-
-```bash
-git status
-git add -A
-git commit -m "Organize ADE ndnSIM project"
-git branch -M main
-git remote -v
-git push -u origin main
-```
-
-For a new GitHub repository, set its URL before pushing:
-
-```bash
-git remote set-url origin https://github.com/<your-username>/<repository-name>.git
-git push -u origin main
-```
