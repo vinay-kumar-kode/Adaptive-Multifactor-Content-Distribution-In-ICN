@@ -1,0 +1,65 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.suo
+*.user
+
+# Python cache, virtual environments, and local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# ns-3 / ndnSIM generated build files
+**/build/
+**/build-dir/
+**/.waf*/
+**/.lock-waf*
+**/testpy-output/
+**/doc/html/
+**/doc/latex/
+**/ms_print.*
+**/massif.*
+
+# Simulation output files
+*.pcap
+*.cwnd
+*.dat
+*.log
+*.mob
+*.routes
+*.plt
+*.tr
+*.xml
+
+# Temporary patch and editor files
+*.orig
+*.rej
+*.patch
+*.diff
+*~
+#*#
+
+# Reversible local backups of the original nested repositories
+**/.git-codex-backup/
+**/.git-codex-backup
+**/.gitignore-codex-backup
+
+# Symlinks from upstream Unix checkouts that cannot be indexed on Windows
+ns-3/src/ndnSIM/RELEASE_NOTES.rst
+ns-3/src/ndnSIM/ndn-cxx/RELEASE_NOTES.rst
+ns-3/src/ndnSIM/ndn-cxx/docs/release-notes-latest.rst
+ns-3/src/ndnSIM/NFD/RELEASE_NOTES.rst
+ns-3/src/ndnSIM/NFD/docs/release-notes-latest.rst
+
+# Local reports and generated exports
+**/output/
+**/results/

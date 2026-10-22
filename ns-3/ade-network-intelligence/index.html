@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADE Network Intelligence | Real-time ICN Research Lab</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="brand-lockup">
+      <div class="brand-mark">A</div>
+      <div><strong>ADE Lab</strong><span>Network intelligence</span></div>
+    </div>
+
+    <div class="sidebar-status">
+      <span class="status-orb"></span>
+      <div><small>Experiment status</small><strong>Interactive simulation</strong></div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-heading">Workspace</span>
+      <a class="nav-item active" data-tab="overview"><span class="nav-icon">01</span><span>Overview</span></a>
+      <a class="nav-item" data-tab="topology"><span class="nav-icon">02</span><span>Network topology</span></a>
+      <a class="nav-item" data-tab="controls"><span class="nav-icon">03</span><span>Simulation controls</span></a>
+      <span class="nav-heading">Analysis</span>
+      <a class="nav-item" data-tab="ade"><span class="nav-icon">04</span><span>Decision engine</span></a>
+      <a class="nav-item" data-tab="explorer"><span class="nav-icon">05</span><span>Request explorer</span></a>
+      <a class="nav-item" data-tab="analytics"><span class="nav-icon">06</span><span>Performance</span></a>
+      <a class="nav-item" data-tab="baseline"><span class="nav-icon">07</span><span>Baseline comparison</span></a>
+      <span class="nav-heading">System</span>
+      <a class="nav-item" data-tab="logs"><span class="nav-icon">08</span><span>Live event log</span></a>
+      <a class="nav-item" data-tab="config"><span class="nav-icon">09</span><span>Connector setup</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="footer-label">RESEARCH PROJECT</span>
+      <p>Adaptive multi-factor content distribution in information-centric networks.</p>
+      <span class="footer-version">ns-3.35 · ndnSIM 2.8</span>
+    </div>
+  </aside>
+
+  <div id="main-wrapper">
+    <header id="top-bar">
+      <div class="breadcrumb"><span>Research lab</span><b>/</b><strong id="current-page-title">Overview</strong></div>
+      <div class="top-actions">
+        <span class="experiment-badge"><span>EXP</span><strong id="top-bar-exp-id">ADE-01</strong></span>
+        <span class="experiment-badge mono" id="top-bar-sim-time">T = 0.0s</span>
+        <span class="provenance-tag demo">DEMO SCENARIO</span>
+        <button class="btn btn-secondary" id="btn-export-csv">Export data</button>
+        <button class="btn btn-primary" id="btn-start-supervisor-demo">Run guided demo</button>
+      </div>
+    </header>
+
+    <section class="shared-room-bar" aria-label="Shared real-time experiment room">
+      <div class="room-intro"><span class="eyebrow">LIVE ROOM</span><strong>Collaborative network experiment</strong><span>Every connected screen sees the same cache and request stream.</span></div>
+      <div class="shared-room-fields">
+        <label>Room<input id="room-id-input" value="ADE-DEMO" maxlength="32"></label>
+        <label>Name<input id="participant-name-input" value="Presenter" maxlength="32"></label>
+        <label>Server<input id="backend-url-input" placeholder="auto: port 8000"></label>
+        <button class="btn btn-secondary" id="room-connect-btn">Connect</button>
+        <span class="room-presence" id="room-presence"><span class="status-orb"></span>Connecting…</span>
+      </div>
+    </section>
+
+    <div id="supervisor-banner"><div><span class="step-pill" id="supervisor-step-pill">STEP 1/12</span><span class="step-text" id="supervisor-step-text">Preparing guided scenario…</span></div><button class="btn btn-danger" id="btn-stop-supervisor-demo">Stop demo</button></div>
+
+    <main id="content-area">
+      <section class="tab-pane active" id="tab-overview">
+        <div class="hero-card">
+          <div class="hero-copy"><span class="eyebrow">ADAPTIVE CONTENT DISTRIBUTION</span><h1>See the network decide.</h1><p>Issue an Interest and watch the simulator explain whether content came from the edge cache or travelled to the producer.</p><div class="hero-tags"><span class="soft-tag blue">Cache-aware routing</span><span class="soft-tag green">Live telemetry</span><span class="soft-tag purple">Multi-factor ADE</span></div></div>
+          <div class="hero-visual"><div class="signal-ring ring-one"></div><div class="signal-ring ring-two"></div><div class="hero-node">ADE<span>R0</span></div><div class="hero-node node-cache">CS<span>R3</span></div><div class="hero-line line-one"></div><div class="hero-line line-two"></div></div>
+        </div>
+
+        <div class="request-console primary-console">
+          <div class="console-heading"><span class="console-number">01</span><div><strong>Issue an Interest</strong><span>Try the same name twice to demonstrate MISS → HIT.</span></div></div>
+          <div class="request-input-row"><input id="content-request-input" type="text" value="/video/news/segment1" placeholder="/video/news/segment1"><button class="btn btn-primary" id="content-request-btn">Request content <span>↗</span></button></div>
+          <div class="request-samples"><button class="sample-request" data-name="/video/news/segment1">Popular video</button><button class="sample-request" data-name="/dataset/research/chunk12">Research chunk</button><button class="sample-request" data-name="/iot/temperature/region1">IoT reading</button></div>
+        </div>
+
+        <article class="decision-panel" id="live-decision-panel">
+          <div class="decision-topline"><div><span class="eyebrow">LATEST ROUTING DECISION</span><h2 id="decision-status">Waiting for an Interest</h2></div><span class="decision-seq" id="decision-seq">READY</span></div>
+          <div class="decision-grid"><div class="decision-route"><div class="route-step"><span class="route-dot consumer-dot">C0</span><div><small>Consumer</small><strong id="decision-content-name">No request yet</strong></div></div><div class="route-arrow">→</div><div class="route-step"><span class="route-dot router-dot">R0</span><div><small>ADE forwarder</small><strong id="decision-path">Path not selected</strong></div></div><div class="route-arrow">→</div><div class="route-step"><span class="route-dot source-dot">P0</span><div><small>Response source</small><strong id="decision-source">Waiting</strong></div></div></div><div class="decision-facts"><div><span>Observed RTT</span><strong id="decision-latency">—</strong></div><div><span>Forwarding face</span><strong id="decision-face">—</strong></div><div><span>Popularity</span><strong id="decision-popularity">—</strong></div></div></div>
+          <div class="decision-bottom"><div class="decision-reason"><span class="eyebrow">WHY THIS ROUTE</span><p id="decision-reason">Issue a request to see how delay, loss, bandwidth, queue pressure, and cache value affect the choice.</p></div><div class="factor-list" id="decision-factor-list"><span class="factor-empty">Factor scores will appear here after the first request.</span></div></div>
+        </article>
+        <div class="section-heading"><div><span class="eyebrow">ROOM TELEMETRY</span><h2>What is happening now</h2></div><span class="live-label"><span class="status-orb"></span>Live updates</span></div>
+        <div class="metrics-grid">
+          <article class="metric-card metric-cyan"><span class="metric-label">Average latency</span><div><strong id="metric-avg-delay">18.4</strong><small>ms</small></div><span class="metric-note">End-to-end EWMA</span></article>
+          <article class="metric-card metric-green"><span class="metric-label">Packet delivery</span><div><strong id="metric-pdr">99.4%</strong></div><span class="metric-note">Successful Interests</span></article>
+          <article class="metric-card metric-purple"><span class="metric-label">Cache hit ratio</span><div><strong id="metric-cache-hit">25.0%</strong></div><span class="metric-note">ContentStore efficiency</span></article>
+          <article class="metric-card metric-blue"><span class="metric-label">Throughput</span><div><strong id="metric-throughput">0.000</strong><small>Mbps</small></div><span class="metric-note">Delivered payload rate</span></article>
+          <article class="metric-card"><span class="metric-label">Interests sent</span><div><strong id="metric-interests-sent">0</strong></div><span class="metric-note">Room total</span></article>
+          <article class="metric-card"><span class="metric-label">Data received</span><div><strong id="metric-data-rcvd">0</strong></div><span class="metric-note">Room total</span></article>
+          <article class="metric-card metric-amber"><span class="metric-label">ADE decisions</span><div><strong id="metric-ade-decisions">0</strong></div><span class="metric-note">Path evaluations</span></article>
+          <article class="metric-card metric-dark"><span class="metric-label">Active path</span><div><strong class="metric-path" id="metric-active-path">Path A (via R1)</strong></div><span class="metric-note">Current forwarding face</span></article>
+        </div>
+
+        <div class="chart-grid overview-charts"><article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">LATENCY</span><h3>ADE vs baseline</h3></div><span class="chart-legend"><i class="legend-blue"></i>ADE <i class="legend-red"></i>Baseline</span></div><div class="chart-wrap"><canvas id="chart-latency" class="chart-element"></canvas></div></article><article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">THROUGHPUT</span><h3>Payload delivery rate</h3></div><span class="chart-value">Mbps</span></div><div class="chart-wrap"><canvas id="chart-throughput" class="chart-element"></canvas></div></article></div>
+      </section>
+
+      <section class="tab-pane" id="tab-topology"><div class="section-heading"><div><span class="eyebrow">NETWORK GRAPH</span><h2>Content moves through the network</h2><p>Click a node to inspect its live role and state.</p></div><button class="btn btn-secondary" id="hud-reset-topology">Reset graph</button></div><div class="topology-grid"><div class="topology-canvas-container"><canvas id="topology-canvas"></canvas><div class="topology-legend-hud"><span><i style="background:#38bdf8"></i>Interest</span><span><i style="background:#34d399"></i>Data</span><span><i style="background:#c084fc"></i>Cache hit</span><span><i style="background:#fb7185"></i>Drop</span></div></div><aside class="inspector-card"><div class="inspector-header"><div><span class="eyebrow">INSPECTOR</span><h3 id="inspector-title">Router R0</h3></div><span class="table-pill cyan" id="inspector-type-tag">ROUTER</span></div><div class="inspector-body" id="inspector-body-content"></div></aside></div></section>
+
+      <section class="tab-pane" id="tab-controls"><div class="section-heading"><div><span class="eyebrow">EXPERIMENT DESIGN</span><h2>Control the network conditions</h2><p>Change delay, loss, and scenario state while traffic is running.</p></div></div><div class="two-column"><div class="panel"><div class="panel-heading"><div><span class="eyebrow">EXECUTION</span><h3>Simulation controls</h3></div><div class="button-row"><button class="btn btn-primary" id="ctrl-play-pause">Pause</button><button class="btn btn-secondary" id="ctrl-step">Step</button><button class="btn btn-secondary" id="ctrl-reset">Reset</button></div></div><div class="control-stack"><label class="control-row"><span>Clock speed</span><select id="ctrl-speed"><option value="0.5">0.5× Real-time</option><option value="1" selected>1.0× Real-time</option><option value="2">2.0× Accelerated</option><option value="4">4.0× High speed</option></select></label><label class="slider-row"><span>Path A propagation delay <b id="slider-path1-delay-val">18 ms</b></span><input type="range" id="slider-path1-delay" min="5" max="150" value="18" step="1"></label><label class="slider-row"><span>Path A packet loss <b id="slider-path1-loss-val">0.5%</b></span><input type="range" id="slider-path1-loss" min="0" max="25" value="0.5" step="0.5"></label></div></div><div class="panel"><div class="panel-heading"><div><span class="eyebrow">FAULT INJECTION</span><h3>Choose a scenario</h3></div></div><div class="scenario-actions-grid"><button class="scenario-card-btn active" data-scenario="baseline_normal"><strong>Normal operation</strong><span>Path A is healthy and preferred.</span></button><button class="scenario-card-btn" data-scenario="congestion_path_a"><strong>Congestion spike</strong><span>Push Path A to 95 ms latency.</span></button><button class="scenario-card-btn" data-scenario="loss_path_b"><strong>Packet loss</strong><span>Inject 15% loss on Path B.</span></button><button class="scenario-card-btn" data-scenario="cache_warmup_path_c"><strong>Cache warm-up</strong><span>Raise edge cache hits to 92%.</span></button></div></div></div></section>
+
+      <section class="tab-pane" id="tab-ade"><div class="section-heading"><div><span class="eyebrow">ADAPTIVE DECISION ENGINE</span><h2>Why the route was selected</h2><p>A multi-criteria score balances delay, loss, bandwidth, cache value, and queue pressure.</p></div><select id="ade-weight-profile" class="select-control"><option value="balanced" selected>Balanced ADE</option><option value="latency_critical">Latency-critical</option><option value="cache_cdn">Cache-prioritized</option><option value="cost_optimized">Cost-optimized</option></select></div><div class="panel decision-summary" id="ade-summary-card"></div><div class="panel table-panel"><div class="panel-heading"><div><span class="eyebrow">LIVE MCDM MATRIX</span><h3>Candidate path scores</h3></div></div><div class="table-responsive"><table class="data-table"><thead><tr><th>Candidate</th><th>Delay</th><th>Loss</th><th>Bandwidth</th><th>FIB cost</th><th>Cache hit</th><th>Queue</th><th>Score</th><th>Status</th></tr></thead><tbody id="ade-comparison-tbody"></tbody></table></div></div><div class="panel"><div class="panel-heading"><div><span class="eyebrow">MODEL TUNING</span><h3>Decision weights</h3></div><span class="soft-tag blue">Σ weights = 1.0</span></div><div class="weight-grid"><label class="slider-row"><span>Delay <b id="weight-delay-val">0.30</b></span><input type="range" id="weight-delay" min="0" max="1" step="0.05" value="0.30"></label><label class="slider-row"><span>Loss <b id="weight-loss-val">0.25</b></span><input type="range" id="weight-loss" min="0" max="1" step="0.05" value="0.25"></label><label class="slider-row"><span>Link cost <b id="weight-cost-val">0.15</b></span><input type="range" id="weight-cost" min="0" max="1" step="0.05" value="0.15"></label><label class="slider-row"><span>Bandwidth <b id="weight-bandwidth-val">0.10</b></span><input type="range" id="weight-bandwidth" min="0" max="1" step="0.05" value="0.10"></label><label class="slider-row"><span>Cache hit <b id="weight-cache-val">0.15</b></span><input type="range" id="weight-cache" min="0" max="1" step="0.05" value="0.15"></label><label class="slider-row"><span>Queue <b id="weight-queue-val">0.05</b></span><input type="range" id="weight-queue" min="0" max="1" step="0.05" value="0.05"></label></div></div></section>
+
+      <section class="tab-pane" id="tab-explorer"><div class="section-heading"><div><span class="eyebrow">REQUEST TRACE</span><h2>Every Interest has a story</h2><p>Search the shared request stream to explain hits, misses, and latency.</p></div><div class="filter-row"><input type="text" id="explorer-search-input" placeholder="Search name or source"><select id="explorer-filter-status"><option value="ALL">All statuses</option><option value="SATISFIED">Satisfied</option><option value="CACHE_HIT">Cache hit</option><option value="CACHE_MISS">Cache miss</option><option value="PACKET_DROP">Packet drop</option></select></div></div><div class="panel table-panel"><div class="table-responsive"><table class="data-table"><thead><tr><th>Time</th><th>Content name</th><th>Consumer</th><th>Ingress</th><th>Source</th><th>Status</th><th>Popularity</th><th>RTT</th><th>Payload</th></tr></thead><tbody id="content-explorer-tbody"></tbody></table></div></div></section>
+
+      <section class="tab-pane" id="tab-analytics"><div class="section-heading"><div><span class="eyebrow">PERFORMANCE</span><h2>Measure the difference</h2><p>Compare adaptive forwarding with a baseline that stays on Path A.</p></div></div><div class="chart-grid"><article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">LATENCY</span><h3>Latency over time</h3></div></div><div class="chart-wrap"><canvas id="chart-analytics-lat" class="chart-element"></canvas></div></article><article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">THROUGHPUT</span><h3>Throughput over time</h3></div></div><div class="chart-wrap"><canvas id="chart-analytics-tp" class="chart-element"></canvas></div></article><article class="panel chart-panel"><div class="panel-heading"><div><span class="eyebrow">DELIVERY</span><h3>Packet delivery ratio</h3></div></div><div class="chart-wrap"><canvas id="chart-pdr" class="chart-element"></canvas></div></article></div></section>
+
+      <section class="tab-pane" id="tab-baseline"><div class="section-heading"><div><span class="eyebrow">BENCHMARK</span><h2>ADE against BestRoute</h2><p>Quantitative impact of adapting to live network conditions.</p></div></div><div class="panel table-panel"><table class="data-table comparison-table"><thead><tr><th>Measure</th><th>Baseline BestRoute</th><th>ADE adaptive</th><th>Improvement</th></tr></thead><tbody><tr><td>Average latency</td><td>95 ms under congestion</td><td>35 ms after path shift</td><td id="cmp-delay-delta"><span class="table-pill green">-63.7%</span></td></tr><tr><td>Packet delivery ratio</td><td>76.5%</td><td>99.4%</td><td id="cmp-pdr-delta"><span class="table-pill green">+20.9%</span></td></tr><tr><td>Routing response</td><td>Static route</td><td>Adaptive selection</td><td><span class="table-pill cyan">Enabled</span></td></tr><tr><td>Cache awareness</td><td>Not considered</td><td>Popularity + hit ratio</td><td><span class="table-pill purple">Multi-factor</span></td></tr></tbody></table></div></section>
+
+      <section class="tab-pane" id="tab-logs"><div class="section-heading"><div><span class="eyebrow">OBSERVABILITY</span><h2>Live event stream</h2><p>Trace decisions, cache events, congestion, and packet outcomes.</p></div></div><div class="panel log-stream-card"><div class="log-controls"><input type="text" id="log-search-input" placeholder="Filter events"><select id="log-filter-select"><option value="ALL">All event types</option><option value="INFO">Info</option><option value="DECISION">Decision</option><option value="CACHE">Cache</option><option value="DROP">Drop</option><option value="WARN">Warning</option></select><button class="btn btn-secondary" id="log-pause-btn">Pause stream</button><button class="btn btn-secondary" id="log-clear-btn">Clear</button></div><div class="log-list-container" id="log-list-container"></div></div></section>
+
+      <section class="tab-pane" id="tab-config"><div class="section-heading"><div><span class="eyebrow">INTEGRATION</span><h2>Connect the real simulator</h2><p>Use the shared room in demo mode, or attach it to ndnSIM telemetry.</p></div></div><div class="config-grid"><div class="panel config-card"><span class="config-number">01</span><h3>Start the adapter</h3><p>Install the Python dependencies, then run the FastAPI server from the repository root.</p><code>pip install -r backend\requirements.txt<br>python backend\server.py</code></div><div class="panel config-card"><span class="config-number">02</span><h3>Open the room</h3><p>Use the dashboard URL on this computer. A second device joins with the same room name.</p><code>http://&lt;host-ip&gt;:8000/dashboard/</code></div><div class="panel config-card"><span class="config-number">03</span><h3>Explain the result</h3><p>Request a name once for a miss, repeat it for a hit, then use the topology and analytics tabs to explain the path.</p><span class="soft-tag green">Ready for review</span></div></div></section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
